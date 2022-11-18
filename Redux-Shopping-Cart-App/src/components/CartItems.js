@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import "./Cart.css";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
+import { fetchData } from "../store/cart-actions";
 const CartItems = () => {
-  const cartItems = useSelector(state => state.cart.cartItems)
+ 
+  const cart = useSelector(state => state.cart);
+
+
   return (
     <div className="cart-container">
       <h2>Your Cart</h2>
       <ul>
-        {cartItems && cartItems.length > 0 && cartItems.map((item,i) => {
+        {cart.cartItems && cart.cartItems.length > 0 && cart.cartItems.map((item,i) => {
           return <li key={item.id}>
             <CartItem quantity={item.quantity} id={item.id} price={item.price} name={item.name} />
           </li>

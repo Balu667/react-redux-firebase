@@ -4,6 +4,7 @@ import { cartActions } from "../store/cart-slice";
 import "./Cart.css";
 const Cart = () => {
   const quantity = useSelector(state => state.cart.cartItems);
+  
   const dispatch = useDispatch();
 
   const showCartFn = () => {
@@ -12,7 +13,7 @@ const Cart = () => {
 
   return (
     <div className="cartIcon">
-      <h3 onClick={showCartFn}>Cart: {quantity.length} Items</h3>
+      <h3 onClick={showCartFn}>Cart: {quantity ? quantity.length : 0} Items</h3>
     </div>
   );
 };
