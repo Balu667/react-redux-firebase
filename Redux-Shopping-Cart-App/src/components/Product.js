@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {cartActions } from "../store/cart-slice";
+import {cartActions, updateData } from "../store/cart-slice";
 
 import "./Product.css";
 const Product = ({ name, id, imgURL, price }) => {
   const dispatch = useDispatch();
   const addToCartHandler = () => {
-    dispatch(cartActions.addItem({name,id,price,imgURL,quantity:1}))
+    dispatch(updateData({id,price,name,imgURL,quantity:1}))
+    // dispatch(cartActions.addItem({name,id,price,imgURL,quantity:1}))
   }
   return (
     <div className="card">
